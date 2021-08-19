@@ -46,7 +46,7 @@ public class TodoIntegrationTest {
 
     @Test
     void should_update_todo_when_updateTodo_given_todo_information() throws Exception {
-        final Todo todo = new Todo(100, "integration test 2", true);
+        final Todo todo = new Todo(60, "integration test 2", true);
         final Todo savedTodo = todoRepository.save(todo);
 
         String updateTodo = "{\n" +
@@ -60,6 +60,17 @@ public class TodoIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.text").value("integration test 2"))
                 .andExpect(jsonPath("$.done").value(false));
+    }
+
+    @Test
+    void should_remove_todo_when_removeTodo_given_todo_id()throws Exception{
+        final Todo todo = new Todo(100, "integration test 3", false);
+        final Todo savedTodo = todoRepository.save(todo);
+
+        mockMvc.perform(MockMvcRequestBuilders.delete("/todos/{id}", savedTodo.getId())
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
     }
 
 }
