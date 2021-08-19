@@ -1,0 +1,18 @@
+2021-08-19 14:02:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TODOS" not found; SQL statement:
+select todos0_.id as id1_0_, todos0_.done as done2_0_, todos0_.text as text3_0_ from todos todos0_ [42102-200]
+2021-08-19 14:03:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TODOS" not found; SQL statement:
+select todos0_.id as id1_0_, todos0_.done as done2_0_, todos0_.text as text3_0_ from todos todos0_ [42102-200]
+2021-08-19 14:09:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TODOS" not found; SQL statement:
+select todos0_.id as id1_0_, todos0_.done as done2_0_, todos0_.text as text3_0_ from todos todos0_ [42102-200]
+2021-08-19 14:09:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TODOS" not found; SQL statement:
+select todos0_.id as id1_0_, todos0_.done as done2_0_, todos0_.text as text3_0_ from todos todos0_ [42102-200]
+2021-08-19 14:10:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TODOS" not found; SQL statement:
+select todos0_.id as id1_0_, todos0_.done as done2_0_, todos0_.text as text3_0_ from todos todos0_ [42102-200]
+2021-08-19 14:16:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TODOS" not found; SQL statement:
+select todos0_.id as id1_0_, todos0_.done as done2_0_, todos0_.text as text3_0_ from todos todos0_ [42102-200]
