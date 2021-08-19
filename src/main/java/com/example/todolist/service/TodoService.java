@@ -31,8 +31,17 @@ public class TodoService {
     }
 
     private Todo updateTodoInfo(Todo todo, Todo todoInfo) {
-        todo.setDone(todoInfo.getDone());
+//        todo.setDone(todoInfo.getDone());
+//        return todo;
+
+        if(todo.getDone() != todoInfo.getDone()){
+            todo.setDone(todoInfo.getDone());
+        }
+        if (todoInfo.getText() != null){
+            todo.setText(todoInfo.getText());
+        }
         return todo;
+
     }
 
     public Todo removeTodo(Integer id) {
