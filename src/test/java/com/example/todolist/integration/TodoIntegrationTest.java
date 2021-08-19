@@ -1,6 +1,7 @@
 package com.example.todolist.integration;
 
-import com.example.todolist.service.TodoService;
+import com.example.todolist.Entity.Todo;
+import com.example.todolist.repository.TodoRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -19,7 +20,7 @@ public class TodoIntegrationTest {
     private MockMvc mockMvc;
 
     @Autowired
-    private TodoService todoService;
+    private TodoRepository todoRepository;
 
 
     @Test
@@ -33,14 +34,32 @@ public class TodoIntegrationTest {
     @Test
     void should_create_new_todo_when_addTodo_given_todo_information() throws Exception {
         String todo = "{\n" +
-                "    \"text\": \"integration test\"\n" +
+                "    \"text\": \"integration test 1\"\n" +
                 "}";
 
         mockMvc.perform(MockMvcRequestBuilders.post("/todos")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(todo))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.text").value("integration test"));
+                .andExpect(jsonPath("$.text").value("integration test 1"));
+    }
+
+    @Test
+    void should_update_todo_when_updateTodo_given_todo_information() throws Exception {
+        final Todo todo = new Todo(100, "integration test 2", true);
+        final Todo savedTodo = todoRepository.save(todo);
+
+        String updateTodo = "{\n" +
+                "    \"text\": \"integration test 2\",\n" +
+                "    \"done\": false\n" +
+                "}";
+
+        mockMvc.perform(MockMvcRequestBuilders.put("/todos/{id}", savedTodo.getId())
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(updateTodo))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.text").value("integration test 2"))
+                .andExpect(jsonPath("$.done").value(false));
     }
 
 }
